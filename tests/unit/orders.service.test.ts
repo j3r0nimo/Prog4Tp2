@@ -1,0 +1,16 @@
+import { describe, it, expect, beforeEach } from "vitest";
+import OrdersService from "../../src/services/orders.service";
+
+describe("OrdersService_Crear pedido", () => {
+  beforeEach(() => OrdersService._clear());
+
+  it("debe calcular el precio correctamente según tamaño y toppings", () => {
+    const items = [
+      { size: "S", toppings: ["queso", "jamon"] },
+      { size: "L", toppings: ["aceitunas"] }
+    ] as any;
+
+    const price = OrdersService.calcularPrecio(items);
+    expect(price).toBe(500 + 2 * 200 + 900 + 200); // 2000 total
+  });
+});
