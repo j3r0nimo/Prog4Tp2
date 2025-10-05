@@ -5,17 +5,19 @@ const TOPPING_PRECIO = 200;
 const MAX_TOPPINGS = 5;
 
 export class OrdersService {
-  calcularPrecio(items: Item[]): number {
-    let total = 0;
-    for (const it of items) {
-      const toppings = it.toppings?.length ?? 0;
-      if (toppings > MAX_TOPPINGS) throw new Error("TOPPINGS MAXIMOS EXCEDIDOS");
-      total += SIZE_FIJOS[it.size] + toppings * TOPPING_PRECIO;
+    // calculo precio del pedido basandome en la cantidad de toppings y el tamaño de la pizza
+    calcularPrecio(items: Item[]): number {
+        let total = 0;
+        for (const it of items) {
+            const toppings = it.toppings?.length ?? 0;
+            if (toppings > MAX_TOPPINGS)
+                throw new Error("TOPPINGS MAXIMOS EXCEDIDOS");
+            total += SIZE_FIJOS[it.size] + toppings * TOPPING_PRECIO;
+        }
+        return total;
     }
-    return total;
-  }
 
-  _clear() {}
+    _clear() { }
 }
 
 export default new OrdersService();
