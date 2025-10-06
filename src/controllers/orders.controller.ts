@@ -22,3 +22,13 @@ export function crearPedido(req: Request, res: Response) {
     return res.status(500).json({ error: "error interno que pasa todo conocimiento humano y lo puede entender nada mas un ente omnipotente, omnisciente y omnipresente" });
   }
 }
+export function cancelOrder(req: Request, res: Response) {
+  try {
+    const order = OrdersService.cancel(req.params.id);
+    return res.json(order);
+  } catch (err: any) {
+    if (err.message === "NO_SE_PUEDE_CANCELAR_DELIVERED")
+      return res.status(409).json({ error: "cancelar_delivered_es_imposible" });
+    return res.status(404).json({ error: "no_esta" });
+  }
+}
