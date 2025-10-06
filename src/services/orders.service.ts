@@ -31,7 +31,11 @@ export class OrdersService {
         this.store.set(id, ord);
         return ord;
     }
-    
+
+    list() {
+        return Array.from(this.store.values());
+    }
+
     // agregar dentro de OrdersService(tarea futura)
     _clear() { }
 }
