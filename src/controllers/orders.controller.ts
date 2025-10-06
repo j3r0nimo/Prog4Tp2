@@ -8,13 +8,8 @@ export function crearPedido(req: Request, res: Response) {
     return res.status(422).json({ error: parse.error.flatten() });
 
   try {
-    const order = {
-      id: Date.now().toString(),
-      precio: OrdersService.calcularPrecio(parse.data.items),
-      items: parse.data.items,
-      direccion: parse.data.direccion,
-      status: "pending"
-    };
+    // Usar el método create del servicio para que se guarde en el store
+    const order = OrdersService.create(parse.data.items, parse.data.direccion);
     return res.status(201).json(order);
   } catch (err: any) {
     if (err.message === "TOPPINGS MAXIMOS EXCEDIDOS")
@@ -22,6 +17,7 @@ export function crearPedido(req: Request, res: Response) {
     return res.status(500).json({ error: "error interno que pasa todo conocimiento humano y lo puede entender nada mas un ente omnipotente, omnisciente y omnipresente" });
   }
 }
+
 export function cancelarPedido(req: Request, res: Response) {
   try {
     const order = OrdersService.cancel(req.params.id);
@@ -31,4 +27,9 @@ export function cancelarPedido(req: Request, res: Response) {
       return res.status(409).json({ error: "cancelar_delivered_es_imposible" });
     return res.status(404).json({ error: "no_esta" });
   }
+}
+export function listarPedidos(req: Request, res: Response) {
+  const status = req.query.status as any;
+  const data = OrdersService.list(status);
+  return res.json(data);
 }

@@ -26,7 +26,7 @@ describe("OrdersService_Crear pedido", () => {
     OrdersService._seed(o1);
     OrdersService._seed(o2);
 
-    const result = OrdersService.list(); // sin filtro
+    const result = OrdersService.list(); 
     expect(result.length).toBe(2);
   });
 

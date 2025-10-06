@@ -5,6 +5,8 @@ const TOPPING_PRECIO = 200;
 const MAX_TOPPINGS = 5;
 
 export class OrdersService {
+    private store: Map<string, any> = new Map();
+    private idContador = 0;
     // calculo precio del pedido basandome en la cantidad de toppings y el tamaño de la pizza
     calcularPrecio(items: Item[]): number {
         let total = 0;
@@ -16,7 +18,6 @@ export class OrdersService {
         }
         return total;
     }
-    private store: Map<string, any> = new Map();
 
     _seed(order: any) {
         this.store.set(order.id, order);
@@ -33,14 +34,34 @@ export class OrdersService {
     }
     // funcion para listar los pedidos, tambien tiene implementado el filtrado por status
     list(status?: string) {
-        const all = Array.from(this.store.values());
-        if (!status) return all;
-        return all.filter(o => o.status === status);
+  const all = Array.from(this.store.values());
+  if (!status) return all;
+  return all.filter((o) => o.status === status);
+}
+
+    create(items: any[], direccion: string) {
+        this.idContador++;
+        const id = this.idContador;
+        const precio = this.calcularPrecio(items);
+
+        const order = {
+            id,
+            items,
+            direccion,
+            status: "pending",
+            precio,
+            createdAt: new Date().toISOString(),
+        };
+
+        this._seed(order);
+        return order;
     }
 
 
     // agregar dentro de OrdersService(tarea futura)
-    _clear() { }
+    _clear() {
+        this.store.clear();
+    }
 }
 
 export default new OrdersService();
