@@ -33,3 +33,7 @@ export function listarPedidos(req: Request, res: Response) {
   const data = OrdersService.list(status);
   return res.json(data);
 }
+export function cambiarStatus(req: Request, res: Response) {
+    const order = OrdersService._setStatus(req.params.id, req.body.status);
+    return res.json(order);
+}

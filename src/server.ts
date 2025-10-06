@@ -1,11 +1,7 @@
-import express from "express";
+import { makeApp } from "./app";
 
-const app = express();
+const app = makeApp();
 const port = 3000;
-
-app.get("/", (req, res) => {
-  res.send("Servidor funcionando");
-});
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);

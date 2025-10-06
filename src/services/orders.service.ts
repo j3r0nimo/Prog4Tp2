@@ -1,4 +1,3 @@
-import { Item, Size } from "../models/order.model";
 
 const SIZE_FIJOS: Record<Size, number> = { S: 500, M: 700, L: 900 };
 const TOPPING_PRECIO = 200;
@@ -34,14 +33,14 @@ export class OrdersService {
     }
     // funcion para listar los pedidos, tambien tiene implementado el filtrado por status
     list(status?: string) {
-  const all = Array.from(this.store.values());
-  if (!status) return all;
-  return all.filter((o) => o.status === status);
-}
+        const all = Array.from(this.store.values());
+        if (!status) return all;
+        return all.filter((o) => o.status === status);
+    }
 
     create(items: any[], direccion: string) {
         this.idContador++;
-        const id = this.idContador;
+        const id = String(this.idContador);
         const precio = this.calcularPrecio(items);
 
         const order = {
@@ -56,9 +55,16 @@ export class OrdersService {
         this._seed(order);
         return order;
     }
+    
+    _setStatus(id: string, status: string) {
+        const ord = this.store.get(id);
+        if (ord) {
+            ord.status = status;
+            this.store.set(id, ord);
+        }
+        return ord;
+    }
 
-
-    // agregar dentro de OrdersService(tarea futura)
     _clear() {
         this.store.clear();
     }
