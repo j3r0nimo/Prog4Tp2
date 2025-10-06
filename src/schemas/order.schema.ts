@@ -6,8 +6,8 @@ export const ItemSchema = z.object({
 });
 
 export const CrearPedidoSchema = z.object({
-  items: z.array(ItemSchema).min(1, "items no puede estar vacio"),
-  direccion: z.string().min(10, "direccion corta")
+  items: z.array(ItemSchema).min(1, "items no puede estar vacio, ingrese algun dato"),
+  direccion: z.string().min(10, "direccion corta, minimo de caracteres: 10")
 });
 
 export type CreateOrderInput = z.infer<typeof CrearPedidoSchema>;

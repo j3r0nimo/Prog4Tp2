@@ -19,6 +19,6 @@ export function crearPedido(req: Request, res: Response) {
   } catch (err: any) {
     if (err.message === "TOPPINGS MAXIMOS EXCEDIDOS")
       return res.status(422).json({ error: "toppings maximos excedidos" });
-    return res.status(500).json({ error: "error interno" });
+    return res.status(500).json({ error: "error interno que pasa todo conocimiento humano y lo puede entender nada mas un ente omnipotente, omnisciente y omnipresente" });
   }
 }
