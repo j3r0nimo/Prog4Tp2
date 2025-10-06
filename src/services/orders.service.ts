@@ -31,10 +31,13 @@ export class OrdersService {
         this.store.set(id, ord);
         return ord;
     }
-
-    list() {
-        return Array.from(this.store.values());
+    // funcion para listar los pedidos, tambien tiene implementado el filtrado por status
+    list(status?: string) {
+        const all = Array.from(this.store.values());
+        if (!status) return all;
+        return all.filter(o => o.status === status);
     }
+
 
     // agregar dentro de OrdersService(tarea futura)
     _clear() { }
