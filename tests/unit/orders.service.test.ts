@@ -20,4 +20,14 @@ describe("OrdersService_Crear pedido", () => {
     expect(() => OrdersService.cancel(order.id)).toThrow("NO_SE_PUEDE_CANCELAR_DELIVERED");
   });
 
+  it("debe listar todos los pedidos", () => {
+    const o1 = { id: "1", status: "pending" } as any;
+    const o2 = { id: "2", status: "delivered" } as any;
+    OrdersService._seed(o1);
+    OrdersService._seed(o2);
+
+    const result = OrdersService.list(); // sin filtro
+    expect(result.length).toBe(2);
+  });
+
 });
