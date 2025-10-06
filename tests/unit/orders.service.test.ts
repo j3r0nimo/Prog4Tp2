@@ -11,9 +11,9 @@ describe("OrdersService_Crear pedido", () => {
     ] as any;
 
     const price = OrdersService.calcularPrecio(items);
-    expect(price).toBe(500 + 2 * 200 + 900 + 200); // 2000 total
+    expect(price).toBe(500 + 2 * 200 + 900 + 200); // tendria que dar 2000, si no entonces llueve fuego y eso no creo que es bueno
   });
-  
+
   it("no debe permitir cancelar un pedido entregado", () => {
     const order = { id: "1", items: [], direccion: "Valida", status: "delivered" } as any;
     OrdersService._seed(order);

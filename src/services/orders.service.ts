@@ -22,8 +22,9 @@ export class OrdersService {
     _seed(order: any) {
         this.store.set(order.id, order);
     }
-
+    // funcion para cancelar pedido mientras no tenga como status "delivered" ("enviado" para los que no saben)
     cancel(id: string) {
+        // "ord" hace referencia al "order", aclaro porque me no se me ocurre otro nombre y repetir "order" no da
         const ord = this.store.get(id);
         if (!ord) throw new Error("NO_SE_ENCONTRO");
         if (ord.status === "delivered") throw new Error("NO_SE_PUEDE_CANCELAR_DELIVERED");
