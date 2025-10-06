@@ -16,7 +16,6 @@ export class OrdersService {
         }
         return total;
     }
-    // agregar dentro de OrdersService
     private store: Map<string, any> = new Map();
 
     _seed(order: any) {
@@ -32,7 +31,8 @@ export class OrdersService {
         this.store.set(id, ord);
         return ord;
     }
-
+    
+    // agregar dentro de OrdersService(tarea futura)
     _clear() { }
 }
 

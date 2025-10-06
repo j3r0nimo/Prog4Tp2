@@ -22,7 +22,7 @@ export function crearPedido(req: Request, res: Response) {
     return res.status(500).json({ error: "error interno que pasa todo conocimiento humano y lo puede entender nada mas un ente omnipotente, omnisciente y omnipresente" });
   }
 }
-export function cancelOrder(req: Request, res: Response) {
+export function cancelarPedido(req: Request, res: Response) {
   try {
     const order = OrdersService.cancel(req.params.id);
     return res.json(order);
