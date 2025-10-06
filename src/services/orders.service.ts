@@ -16,6 +16,21 @@ export class OrdersService {
         }
         return total;
     }
+    // agregar dentro de OrdersService
+    private store: Map<string, any> = new Map();
+
+    _seed(order: any) {
+        this.store.set(order.id, order);
+    }
+
+    cancel(id: string) {
+        const ord = this.store.get(id);
+        if (!ord) throw new Error("NO_SE_ENCONTRO");
+        if (ord.status === "delivered") throw new Error("NO_SE_PUEDE_CANCELAR_DELIVERED");
+        ord.status = "cancelled";
+        this.store.set(id, ord);
+        return ord;
+    }
 
     _clear() { }
 }
