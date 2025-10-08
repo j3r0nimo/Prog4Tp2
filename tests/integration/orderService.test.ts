@@ -1,7 +1,14 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
+import * as service from '../../src/services/orderService';
+import { db } from '../../src/db/inMemoryStore';
 
-describe('Base placeholder', () => {
-  it('dummy test', () => {
-    expect(true).toBe(true);
+beforeEach(() => db.clear());
+
+describe('Reglas de negocio - cancelOrder', () => {
+  it('debería lanzar error 409 si el pedido ya fue entregado', () => {
+    const order = service.createOrder([{ name: 'Muzzarella', size: 'S' }], 'Calle larga 123');
+    db.update(order.id, { status: 'delivered' });
+
+    expect(() => service.cancelOrder(order.id)).toThrow();
   });
 });
