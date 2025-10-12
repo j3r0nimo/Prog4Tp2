@@ -26,12 +26,13 @@ Este repositorio contiene la **base inicial** del proyecto de pizzería. Incluye
 * La cobertura se genera con Vitest y se puede ver en coverage/ en formato HTML.
 
 ### Ejemplos de Curl:
+Cabe aclarar que estos comandos se estan haciendo en el command prompt de vscode
 - mostrar listado de pedidos: ``curl http://localhost:3000/orders``
 - crear pedido (usamos un archivo json llamado "test-order" en el cual almacenamos los datos para el post): ``curl -X POST http://localhost:3000/orders -H "Content-Type: application/json" -d @test-order.json``
 - cancelar pedido: ``curl -X POST http://localhost:3000/orders/1/cancel``
 - cambiar status a delivered: ``curl -X POST http://localhost:3000/orders/1/status -H "Content-Type: application/json" -d "{\"status\":\"delivered\"}"``
 
-user stories:
+### User stories:
 1. crear pedido con calculo de precio:
 - Rojo: prueba que debe calcular el precio segun el tamaño y toppings, la cual falla
 - Verde: implementamos calcularPrecio() en OrdersService
