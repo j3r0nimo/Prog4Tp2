@@ -13,11 +13,9 @@ Este repositorio contiene la **base inicial** del proyecto de pizzería. Incluye
 
 **2.** Con: **npm run dev** se levanta el servidor en modo desarrollo con recarga automática.
 
-**3.** Con: **npm run build** compila TypeScript a dist/
+**3.** Con: **npm run test** corre todos los tests con Vitest
 
-**4.** Con: **npm run test** corre todos los tests con Vitest
-
-**5.** Con **npm run coverage** genera reporte de cobertura de tests.
+**4.** Con **npm run coverage** genera reporte de cobertura de tests.
 
 ---
 
