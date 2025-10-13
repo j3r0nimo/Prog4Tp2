@@ -39,13 +39,6 @@ npm run coverage
 ---
 
 
-#### Endpoints principales
-POST  /orders	Crea un nuevo pedido
-GET	 /orders/:id	Obtiene un pedido por ID
-POST  /orders/:id/cancel	Cancela un pedido (si no fue entregado)
-GET /orders?status= ("pending", "delivered", "cancelled") filtra ordenes segun status, si no se pasa status devuelve todos
-
----
 
 ## Endpoints principales
 
