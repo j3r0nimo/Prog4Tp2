@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Dist folder (compilado)
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entornos de desarrollo
+.vscode/
+.idea/
+
+# Coverage reports
+coverage/
