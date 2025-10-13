@@ -6,7 +6,18 @@ import { randomUUID } from "crypto";
  */
 import { Order, OrderSize } from "../models/order";
 
-
+export class OrderAlreadyDeliveredError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "OrderAlreadyDeliveredError";
+  }
+}
+export class OrderNotFoundError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "OrderNotFoundError";
+  }
+}
 export class OrderService {
   private orders: Order[] = [];
 
@@ -36,9 +47,9 @@ export class OrderService {
 
   cancel(id: string): Order {
     const order = this.getById(id);
-    if (!order) throw new Error("No se encontro la orden");
-    if (order.status === "delivered") throw new Error("el pedido ya se envio, no se puede cancelar");
-    order.status = "cancelled";
+  if (!order) throw new OrderNotFoundError("No se encontro la orden");
+if (order.status === 'delivered') throw new OrderAlreadyDeliveredError("el pedido ya se envio, no se puede cancelar");
+  order.status = 'cancelled';
     return order;
   }
 
