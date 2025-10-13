@@ -1,1 +1,32 @@
-node_modules/\ncoverage/\ndist/\nbuild/
+# Node modules
+node_modules/
+
+# Coverage reports
+coverage/
+
+# Output of TypeScript
+dist/
+build/
+
+# Env files
+.env
+.env.* 
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Jest cache
+.jest/
+
+# IDEs and editors
+.vscode/
+.idea/
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Others
+*.tsbuildinfo
