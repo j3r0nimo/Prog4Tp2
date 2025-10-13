@@ -2,9 +2,9 @@
 
 es un proceso que se usa en los TDDs, primero se hace un test que falla(Rojo), después una implementación mínima para que pase el test(Verde) y por ultimo se mejora la implementación mínima (refactorizar) sin cambiar el comportamiento de la función
 
-**Rojo:** El propósito de esta fase es escribir una prueba que informe la implementación de una característica. La prueba sólo pasará cuando se cumplan sus expectativas
-**Verde:** El objetivo es encontrar una solución, sin preocuparse por optimizar su implementación
-**Refactorizar:** buscamos mejorar el código de implementación, hacerlo mas descriptivo y mas rapido
+- **Rojo:** El propósito de esta fase es escribir una prueba que informe la implementación de una característica. La prueba sólo pasará cuando se cumplan sus expectativas
+- **Verde:** El objetivo es encontrar una solución, sin preocuparse por optimizar su implementación
+- **Refactorizar:** buscamos mejorar el código de implementación, hacerlo mas descriptivo y mas rapido
 
 ---
 
